@@ -86,12 +86,11 @@
 #options-view-button {
     all: unset;
 
-    margin: ;
+    position: absolute;
 
     inset: 0;
     z-index: 3;
-
-    border: 1px solid red;
+    cursor: pointer;
 }
 
 #options {
@@ -100,7 +99,6 @@
     border-radius: .375rem;
     border: 1px solid #252529;
     background: #17171A;
-
     display: none;
 }
 
@@ -152,8 +150,6 @@
     inset: 0;
 
     cursor: pointer;
-
-    outline: 1px solid red;
 }
 
 .option:nth-child(1) {
@@ -184,6 +180,6 @@
     color: #A881E6;
 }
 
-.select:has(.option input:checked) #category-select {
+.select:has(.option input:checked) #selected-value {
     color: #FBF9FE;
 }
