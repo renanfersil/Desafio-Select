@@ -1,20 +1,38 @@
 lucide.createIcons();
 
-/*
-const optionview = document.getElementById("options-view-button")
-Selection.addEventListener("change", function() {
-    const selectedValue = select.value
+let select = document.querySelector('.select'),
+selectedValue = document.getElementById('select-value'),
+optionsViewButton = document.getElementById('options-view-button'),
+inputsOptions = document.querySelectorAll('.option input')
 
-    // esconder as opções
-    const options = select.querySelectorAll("option")
-    options.forEach(option => {
-        option.style.display = "none"
-    })
+inputsOptions.forEach(input => {
+    input.addEventListener('click', event => {
+        selectedValue.textContent = input.dataset.label
 
-    // exibe as opções
-    const selectedOption = select.querySelector(`option[VALUE="${selectedValue}"]`)
-    if (selectedOption) {
-        selectedOption.style.display = "block"
+        const isMouseOrTouch = 
+        event.pointerType == "mouse" ||
+        event.pointerType == "touch"
+
+        isMouseOrTouch && optionsViewButton.click()
+   })
+})
+
+window.addEventListener('keydown', e => {
+    if (!select.classList.contains('open')) return
+
+    if (e.key == "Escape" || e.key == "") {
+        optionsViewButton.click()
     }
 })
-*/
+
+optionsViewButton.addEventListener('input', () => {
+    select.classList.toggle('open')
+
+    if (!select.classList.contains('open')) return
+
+    const input = 
+        document.querySelector('.option input:checked') ||
+        document.querySelector('.option input')
+
+    input.focus()
+})
